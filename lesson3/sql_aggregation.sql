@@ -71,3 +71,30 @@ FROM orders
 WHERE id IS NOT NULL
 GROUP BY id
 ORDER BY id;
+
+SELECT
+standard_qty, 
+gloss_qty,
+SUM (standard_qty + gloss_qty) AS total_sum
+FROM orders
+GROUP BY standard_qty, gloss_qty
+LIMIT 10;
+
+
+-- GROUP BY Part 2
+/* 
+You can GROUP BY multiple columns at once, as we showed here. This is often 
+useful to aggregate across a number of different segments.
+
+The order of columns listed in the ORDER BY clause does make a difference. 
+You are ordering the columns from left to right.
+*/
+
+SELECT
+account_id,
+channel,
+COUNT (id) AS events
+FROM web_events
+GROUP BY account_id, channel
+ORDER BY account_id ASC, events DESC;
+
