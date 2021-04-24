@@ -98,3 +98,30 @@ FROM web_events
 GROUP BY account_id, channel
 ORDER BY account_id ASC, events DESC;
 
+
+DISTINCT
+ /* 
+ DISTINCT is always used in SELECT statements, and it provides the unique rows 
+ for all columns written in the SELECT statement.
+ SELECT DISTINCT clause to remove duplicate rows from a result set returned by 
+ a query.
+ */
+
+SELECT 
+DISTINCT
+account_id,
+channel
+FROM web_events
+ORDER BY account_id;
+
+
+HAVING
+
+/*
+ AVING is the “clean” way to filter a query that has been aggregated, any time 
+you want to perform a WHERE on an element of your query that was created by an
+aggregate, you need to use HAVING instead.
+
+So basically, having adds filter to aggregators like SUM, where the WHERE clause
+cannot.
+*/
