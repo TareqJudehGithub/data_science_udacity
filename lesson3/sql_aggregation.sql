@@ -125,3 +125,17 @@ aggregate, you need to use HAVING instead.
 So basically, having adds filter to aggregators like SUM, where the WHERE clause
 cannot.
 */
+
+
+WHERE vs HAVING 
+
+/* 
+- WHERE subsets the returned data based on a logical condition.
+
+- WHERE appears after the FROM, JOIN, and ON clauses, but before GROUP BY.
+
+- HAVING appears after the GROUP BY clause, but before the ORDER BY clause.
+
+- HAVING is like WHERE, but it works on logical statements involving aggregations.
+
+*/
