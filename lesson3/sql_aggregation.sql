@@ -139,3 +139,48 @@ WHERE vs HAVING
 - HAVING is like WHERE, but it works on logical statements involving aggregations.
 
 */
+
+SELECT 
+        accounts.id,
+        accounts.name,
+        SUM (orders.total) AS total_orders
+FROM accounts
+JOIN orders
+ON accounts.id = orders.account_id
+GROUP BY 1, 2
+HAVING SUM (orders.total) >= 1000
+ORDER BY total_orders;
+
+-- The above query, returns accounts with total orders of more than 10,000
+
+
+DATE
+
+/*
+The first function you are introduced to in working with dates is DATE_TRUNC.
+
+DATE_TRUNC allows you to truncate your date to a particular part of your date-time column. 
+Common trunctions are day, month, and year. Here is a great blog post by Mode Analytics on 
+the power of this function.
+
+DATE_PART can be useful for pulling a specific portion of a date, but notice pulling month 
+or day of the week (dow) means that you are no longer keeping the years in order. Rather 
+you are grouping for certain components regardless of which year they belonged in.
+
+For additional functions you can use with dates, check out the documentation here, but the 
+DATE_TRUNC and DATE_PART functions definitely give you a great start!
+
+You can reference the columns in your select statement in GROUP BY and ORDER BY clauses with 
+numbers that follow the order they appear in the select statement. For example
+
+SELECT standard_qty, COUNT(*)
+
+FROM orders
+
+GROUP BY 1 (this 1 refers to standard_qty since it is the first of the columns included in the 
+select statement)
+
+ORDER BY 1 (this 1 refers to standard_qty since it is the first of the columns included in the 
+select statement)
+
+*/
