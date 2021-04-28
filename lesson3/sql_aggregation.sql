@@ -184,3 +184,52 @@ ORDER BY 1 (this 1 refers to standard_qty since it is the first of the columns i
 select statement)
 
 */
+
+CASE
+
+CASE -- statements handles 'if' 'then' logic. 
+CASE -- statements must end with the word 'END'
+
+SELECT 
+        id,
+        account_id,
+        occurred_at,
+        channel,
+        CASE WHEN channel = 'facebook' THEN 'Yes' ELSE 'No' END AS if_facebook
+FROM web_events
+
+/* 
+The above query, checks every row (data) in the channel column. If the returned
+result matches 'facebook', then add 'Yes' row data to the new if_facebook column,
+Else, add 'No'.
+*/
+ELSE --captures values not specified in WHEN and THEN statements.
+
+/* 
+CASE must include the following components: WHEN, THEN, and END. ELSE is an optional 
+component to catch cases that didn’t meet any of the other previous CASE conditions.
+
+THE CASE statement always ends with an END
+
+The CASE statement always goes in the SELECT clause.
+
+You can make any conditional statement using any conditional operator (like WHERE) 
+between WHEN and THEN. This includes stringing together multiple conditional statements 
+using AND and OR.
+
+You can include multiple WHEN statements, as well as an ELSE statement again, 
+to deal with any unaddressed conditions.
+
+
+
+*/
+
+
+SELECT
+        id,
+        account_id,
+        total,
+        CASE WHEN total > 300 THEN 'True' ELSE 'False' END AS is_above_300
+FROM orders
+ORDER BY 1;
+
