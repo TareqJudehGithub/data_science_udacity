@@ -167,6 +167,11 @@ DATE_PART can be useful for pulling a specific portion of a date, but notice pul
 or day of the week (dow) means that you are no longer keeping the years in order. Rather 
 you are grouping for certain components regardless of which year they belonged in.
 
+*/
+SELECT  DATE_PART('dow', occurred_at) AS day
+FROM orders;
+-- dow:  where Sunday is 0, and Saturday is 6.
+/*
 For additional functions you can use with dates, check out the documentation here, but the 
 DATE_TRUNC and DATE_PART functions definitely give you a great start!
 
