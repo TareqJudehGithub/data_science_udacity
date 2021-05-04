@@ -84,6 +84,184 @@ JOIN
 ) AS table3
 ON table2.region_name = table3.region_name AND table2.max_sales_t2 = table3.total_sales_t3
 ORDER BY 3 DESC;
+------------------------------------------------
+
+
+-- Q2. For the region with the largest (sum) of sales total_amt_usd, how many total (count) orders were placed?
+
+--Step1. Query the region wuth the largest sales SUM:
+SELECT	region_name,	
+		MAX (total_sales)
+FROM 
+(
+	SELECT	r.name AS region_name,
+			SUM (o.total_amt_usd) AS total_sales
+	FROM accounts AS a
+	JOIN sales_reps AS sr
+	ON a.sales_rep_id = sr.id
+	JOIN region AS r
+	ON sr.region_id = r.id
+	JOIN orders AS o
+	ON a.id = o.account_id
+	GROUP BY 1
+) sub
+GROUP BY 1;
+
+
+
+-- Step2. total COUNTs for orders 
+SELECT	r.name AS region_name,
+		COUNT (o.total) AS total_orders 
+FROM accounts AS a
+JOIN sales_reps AS sr
+ON a.sales_rep_id = sr.id
+JOIN region AS r
+ON sr.region_id = r.id
+JOIN orders AS o
+ON a.id = o.account_id
+GROUP BY 1
+HAVING SUM (o.total_amt_usd) = 
+(
+	SELECT	MAX (total_sales)
+	FROM 
+	(
+		SELECT	r.name AS region_name,
+		SUM (o.total_amt_usd) AS total_sales
+		FROM accounts AS a
+		JOIN sales_reps AS sr
+		ON a.sales_rep_id = sr.id
+		JOIN region AS r
+		ON sr.region_id = r.id
+		JOIN orders AS o
+		ON a.id = o.account_id
+		GROUP BY 1
+	) AS sub
+);
+------------------------------------------------
+
+--Q3. 
+
+-- Step1. The account that bought the most standard quality papers.
+
+SELECT	a.name AS account_name,
+		SUM (o.standard_qty) AS standard_total,
+		SUM (o.total) AS total_orders
+FROM accounts AS a
+JOIN orders AS o
+ON a.id = o.account_id
+GROUP BY 1
+ORDER BY  2 DESC 
+LIMIT 1
+
+
+-- Step2 . How many accounts had more total purchases than the account name in Step1?
+
+SELECT	COUNT (account_name) AS total_orders
+FROM 
+(
+	SELECT a.name AS account_name
+	FROM accounts AS a
+	JOIN orders AS o
+	ON a.id = o.account_id
+	GROUP BY 1
+	HAVING SUM (o.total) > 
+		(
+			SELECT total_orders
+			FROM
+			(
+			SELECT	a.name AS account_name,
+				SUM (o.standard_qty) AS standard_total,
+				SUM (o.total) AS total_orders
+			FROM accounts AS a
+			JOIN orders AS o
+			ON a.id = o.account_id
+			GROUP BY 1
+			ORDER BY  2 DESC 
+			LIMIT 1
+			) AS inner_sub
+		)
+) AS outer_sub;
+------------------------------------------------
+
+
+--Q4. 
+
+-- Step 1. Query for the customer that spent the most (in total over their lifetime as a customer) total_amt_usd
+SELECT	a.id AS account_id,
+		a.name AS account_name,
+		SUM (o.total_amt_usd) AS total_amt
+FROM accounts AS a
+JOIN web_events as e
+ON a.id = e.account_id
+JOIN orders AS o
+ON a.id = o.account_id
+GROUP BY 1, 2
+ORDER BY 3 DESC
+LIMIT 1;
+
+
+-- Step 2. How many web events did that account from Step 1 had?
+SELECT	a.name AS account_name,
+		e.channel AS channel,
+		COUNT (*) AS events_total
+	FROM accounts AS a
+	JOIN web_events as e
+	ON a.id = e.account_id AND a.id = (
+		SELECT account_id
+		FROM 
+			(
+			SELECT	a.id AS account_id,
+					a.name AS account_name,
+					SUM (o.total_amt_usd) AS total_amt
+			FROM accounts AS a
+			JOIN web_events as e
+			ON a.id = e.account_id
+			JOIN orders AS o
+			ON a.id = o.account_id
+			GROUP BY 1, 2
+			ORDER BY 3 DESC
+			LIMIT 1
+			) AS inner_q
+		)
+GROUP BY 1, 2
+ORDER BY 3 DESC;
+
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
