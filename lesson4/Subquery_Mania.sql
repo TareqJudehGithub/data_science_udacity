@@ -53,12 +53,12 @@ FROM
 		MAX (total_sales) AS max_sales_t2
 	FROM 
 	(
-		-- table1
 		SELECT	sr.name AS sales_rep_name,
 					r.name AS region_name,
 					SUM (o.total_amt_usd)  AS total_sales
 			FROM accounts AS a
 			JOIN sales_reps AS sr
+		-- table1
 			ON a.sales_rep_id = sr.id
 			JOIN region AS r
 			ON sr.region_id = r.id
@@ -227,6 +227,84 @@ GROUP BY 1, 2
 ORDER BY 3 DESC;
 
 ------------------------------------------------
+
+-- Q5. What is the lifetime average amount spent in terms of total_amt_usd for the top 10 total spending accounts?
+
+-- Step1. Query for top 10 total spending account.
+SELECT	a.id AS account_id,
+		a.name AS account_name,
+		SUM (o.total_amt_usd) AS total_amt_spent
+FROM accounts AS a
+JOIN orders AS o
+ON a.id = o.account_id
+GROUP BY 1, 2
+ORDER BY 3 DESC
+LIMIT 10;
+
+-- Step2. Query for avgerage lifetime amount spent based of Step1 query result.
+SELECT ROUND(AVG (total_amt_spent)::NUMERIC, 2) AS avg_amt_spent
+FROM (
+	SELECT	a.id AS account_id,
+			a.name AS account_name,
+			SUM (o.total_amt_usd) AS total_amt_spent
+	FROM accounts AS a
+	JOIN orders AS o
+	ON a.id = o.account_id
+	GROUP BY 1, 2
+	ORDER BY 3 DESC
+	LIMIT 10
+	) AS inner_q;
+-------------------------------------------------
+
+-- Q6. What is the lifetime average amount spent in terms of total_amt_usd, including
+-- only the companies that spent more per order, on average, than the average of all orders.
+
+-- Step1. Query AVG of total_amt_usd for ALL orders.
+SELECT	ROUND(AVG (total_amt_usd)::NUMERIC, 2) AS avg_spent
+FROM orders;
+
+-- Step2. Query for companies that spent more per day, on average, than the average of all orders (Step1).
+SELECT	a.name AS account_name,
+		ROUND(AVG(o.total_amt_usd)::NUMERIC, 2) AS avg_spent
+FROM accounts AS a
+JOIN orders AS o 
+ON a.id = o.account_id
+GROUP BY 1
+HAVING AVG (o.total_amt_usd) > 
+(
+	SELECT	ROUND(AVG (total_amt_usd)::NUMERIC, 2) AS avg_spent
+	FROM orders
+) 
+ORDER BY 1;
+
+-- Step3 Query for average lifetime spent for only accounts from Step2.
+SELECT ROUND (AVG(avg_spent)::NUMERIC, 2) AS avg_spent
+FROM 
+(
+	SELECT	a.name AS account_name,
+		ROUND(AVG(o.total_amt_usd)::NUMERIC, 2) AS avg_spent
+	FROM accounts AS a
+	JOIN orders AS o 
+	ON a.id = o.account_id
+	GROUP BY 1
+	HAVING AVG (o.total_amt_usd) > 
+	(
+		SELECT	ROUND(AVG (total_amt_usd)::NUMERIC, 2) AS avg_spent
+		FROM orders
+	) 
+	ORDER BY 1
+) AS inner_q;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
