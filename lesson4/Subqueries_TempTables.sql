@@ -27,5 +27,8 @@ WITH
 -- The WITH statement is often called a Common Table Expression or CTE.
 
 -- WITH is more cleaner than Subqueries.
--- 
+-- CTEs are more readable.
+
+-- CTEs are more efficient, as the tables aren't recreated with each subquery 
+-- portion as the case in subqueries.
 
