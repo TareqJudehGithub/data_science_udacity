@@ -55,9 +55,6 @@ ORDER BY 1;
 
 
 
-
-
-
 -----------------------------------------------------------
 -- REGEX practice
 SELECT name
@@ -86,6 +83,12 @@ WHERE name ~ '^[0-9]' OR name ~ '[A-Za-z]'
 ORDER BY name ;
 
 
+
+SELECT 	name, 
+		website
+FROM accounts
+WHERE RIGHT (website, 3)  ~ 'com'
+ORDER BY name;
 
 
 
