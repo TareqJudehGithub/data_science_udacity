@@ -111,6 +111,17 @@ Used to remove characters from the beginning and end of a string. This can
 remove unwanted spaces at the beginning or end of a row that often happen with 
 data being moved from Excel or other storage systems.
 */
+
+
+COALESCE
+ /* 
+ COALESCE returns the first NON_NULL value passed for each row, replacing NULL
+ values with a value of our choice
+ */
+SELECT COALESCE (primary_poc, 'some_value') AS primary_poc_modified
+FROM accounts;
+
+
 ----------------
 -- REGEX  
 ~ '[a-zA-Z]'  -- => returns all rows with letters

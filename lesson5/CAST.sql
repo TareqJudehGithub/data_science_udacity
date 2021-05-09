@@ -37,4 +37,3 @@ SELECT '15 minute'::interval,
  '2 week'::interval,
  '3 month'::interval;
 
-
