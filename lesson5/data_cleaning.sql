@@ -84,11 +84,37 @@ CONCAT combines string columns into 1 column.
 Alternatively, we can use '||' two pipes characters to perform concatenation.
 */
 
+TO_DATE
+DATE_PART('month', TO_DATE(month, 'month')) 
+-- Here we changed a month name into the number associated with that particular 
+-- month.
 
+-- DATE functions:
+CAST
 
+/* 
+CAST allows us to change columns from one data type to another.
+change a string to a date:
+*/
+CAST (date_column AS DATE)
+/*
+
+Alternative to CAST is the double : (::) at the end of the query, just like
+ROUND (column::NUMERIC, 2)
+CAST turns a string into numbers or dates.
+*/
+
+TRIM
+
+/* 
+Used to remove characters from the beginning and end of a string. This can 
+remove unwanted spaces at the beginning or end of a row that often happen with 
+data being moved from Excel or other storage systems.
+*/
 ----------------
 -- REGEX  
 ~ '[a-zA-Z]'  -- => returns all rows with letters
 ~ '[0-9]' -- => returns all rows with numbers
 ^  -- for the starting letter only.
+
 

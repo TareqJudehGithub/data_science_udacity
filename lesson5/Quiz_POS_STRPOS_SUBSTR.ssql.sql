@@ -13,7 +13,9 @@ FROM accounts;
 
 SELECT	LEFT (name, STRPOS (name, ' ') -1) AS first_name,
  		RIGHT (name, LENGTH (name) - STRPOS (name, ' ') ) AS last_name,
-		name AS full_name,
+		name AS full_name
 FROM sales_reps
 ORDER BY first_name;
+
+
 
