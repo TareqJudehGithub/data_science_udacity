@@ -64,6 +64,23 @@ FROM orders
 GROUP BY 1
 ORDER BY 2 DESC;
 
+-- total quantity for each account every month:
+SELECT	id,
+		account_id,
+		DATE_TRUNC('month', occurred_at) AS month,
+		SUM (total) AS total
+FROM orders
+GROUP BY 1, 2, 3
+ORDER BY month;
+
+
+-- total sales for day:
+SELECT	DATE_TRUNC('day', occurred_at) AS day,
+		SUM (total_amt_usd) AS total_sales
+FROM orders
+GROUP BY 1
+ORDER BY 1;
+
 
 
 

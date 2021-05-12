@@ -28,3 +28,17 @@ SELECT	DATE_TRUNC('year', occurred_at) AS year,
 		total_amt_usd,
 		SUM (total_amt_usd) OVER (PARTITION BY DATE_TRUNC('year', occurred_at) ORDER BY occurred_at) AS running_total
 FROM orders;
+
+-- OVER: total quantity running (aggregating) monthly report:
+SELECT	
+		DATE_TRUNC ('month', occurred_at) AS month,
+		total AS total,
+		SUM (total) OVER (PARTITION BY DATE_TRUNC ('month', occurred_at) ORDER BY occurred_at) AS running_total
+FROM orders;
+
+
+-- OVER: total_amt_usd (total sales) aggregating daily report:
+SELECT	DATE_TRUNC('day', occurred_at) AS day,
+		total_amt_usd,
+		SUM (total_amt_usd) OVER (PARTITION BY DATE_TRUNC('day', occurred_at) ORDER BY occurred_at) AS daily_sales
+FROM orders;
