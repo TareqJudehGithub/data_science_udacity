@@ -32,5 +32,19 @@ SELECT 	NOW(),
 SET intervalstyle = 'postgres';
 SELECT 	now() AS current_date,
 		now() - INTERVAL 'P1Y1M1DT1H10M30S' AS previous_date;
+		
+-- PostgreSQL interval related operators and functions
+--You can apply the arithmetic operator ( +, -, *, etc.,) to the interval values, for examples:
+
+-- Addition
+SELECT	INTERVAL '2h 50m' + INTERVAL '10m';
+
+-- Substraction
+SELECT INTERVAL '6d' - INTERVAL '1d';
+
+-- times
+SELECT 3 * INTERVAL '3d';
+
+
 
 						  

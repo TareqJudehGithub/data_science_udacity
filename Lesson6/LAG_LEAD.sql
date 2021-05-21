@@ -11,12 +11,12 @@ SELECT	account_id,
 		-- comparing the current row value with the following one using LEAD:
 		LEAD (standard_sum) OVER stand_sum - standard_sum AS lead_difference
 FROM 
-(
-SELECT	account_id,
-		SUM (standard_qty) AS standard_sum
-FROM orders
-GROUP BY 1
-) AS sub
+	(
+	SELECT	account_id,
+			SUM (standard_qty) AS standard_sum
+	FROM orders
+	GROUP BY 1
+	) AS sub
 WINDOW stand_sum AS (ORDER BY standard_sum);
 
 

@@ -19,6 +19,19 @@ SELECT	DATE_TRUNC('month', occurred_at) AS month,
 		SUM (total) OVER (PARTITION BY DATE_TRUNC('month', occurred_at) ORDER BY occurred_at) AS running_total
 from orders;
 
+-- Aggregating monthly posters amount for each account for year 2014:
+
+SELECT 	account_id,
+		name,
+		occurred_at AS date,
+		poster_qty,
+		SUM(poster_qty) OVER (PARTITION BY DATE_TRUNC('month', occurred_at) ORDER BY occurred_at) AS sum_posters
+FROM orders
+JOIN accounts
+ON orders.account_id = accounts.id
+WHERE poster_qty > 0
+AND DATE_TRUNC('month', occurred_at) BETWEEN '2014-01-01' AND '2014-12-31';
+
 
 -- total yearly report:
 
