@@ -25,7 +25,6 @@ fcolor
 FROM distinct_demo
 ORDER BY bcolor, fcolor;
 
-
 -- DISTINCT ON
 
 /* 

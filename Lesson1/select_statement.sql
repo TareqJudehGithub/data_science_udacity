@@ -136,9 +136,12 @@ Storing Data
           Rounding in SQL: 
           */
           ROUND(some formula::numeric, 2) AS column_name
+          -- OR 
+          ROUND(some formula, 2) AS column_name
           /* This will round the outcome to only 2 decimals.*/
           ROUND(poster_amt_usd / (standard_amt_usd + gloss_amt_usd + poster_amt_usd)::numeric,2) AS revenue 
           
+          ROUND(some formula) AS column_name -- rounds to the nearest integer.
           /*
           Logical Operators       
           */

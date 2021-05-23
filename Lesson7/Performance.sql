@@ -24,6 +24,41 @@ Tuning performance with LIMIT:
   the place where it will be executed first will have the maximum impact on query 
   run time.
 
-
-
+- Aggregate before joining, for better performace.
 */
+  SELECT	acc.name AS account_name,
+      sub.web_events
+  FROM 
+  (
+    SELECT	account_id AS account_id,
+        COUNT(*) AS web_events
+    FROM web_events
+    GROUP BY 1
+  ) AS sub
+  JOIN accounts AS acc
+  ON acc.id = sub.account_id
+  ORDER BY 2 DESC;
+
+
+-- And now using WITH:
+  WITH CTE1 AS
+  (
+    SELECT	account_id,
+        COUNT(*) AS web_events
+    FROM web_events 
+    GROUP BY 1
+  )
+  SELECT 	acc.name AS account_name,
+          web_events
+  FROM CTE1
+  JOIN accounts AS acc
+  ON acc.id = CTE1.account_id
+  ORDER BY 2 DESC;
+
+
+-- EXPLAIN.  EXPLAIN measures how much a query cost, and shows the query execution order.
+
+EXPLAIN
+SELECT *
+FROM web_events;
+
