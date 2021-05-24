@@ -1,0 +1,133 @@
+The Shell
+- The Shell is a Command Line Interface (CLI) to run commands on a computer.
+- Just like Javascript or Python, the Shell is a programming language..it has 
+   variables.
+   $ greetings='Hello, world!'
+   $ echo $greetings
+   >> Hello, world!
+
+bin stands for binary.
+
+- Environment Variables. Environment variables are shared with the program you
+  run your self.
+  Some of the Environment Variables are PATH, PWD:
+  PATH   tell our system where our programs are.
+   $ echo $PATH
+   To save a new directory into the Environment Variables:
+   $ PATH=$PATH://your_directory_path
+
+The Terminal
+We will be using Git Bash Terminal.
+
+Shell Commands:
+ - echo   returns back (print) user's input
+     $echo hello, world!
+     >> hello, world!
+     Notice in this example, how '!' doubles our input..to prevent that, we use
+     quotation marks '' or ""
+$ before a word, indicates this is a shell variable
+$ echo $COLUMN x $LINES      returns the size of our Terminal.
+
+ - touch  Creates a new file.
+ - vim    Edits an existing file.
+
+ - ls     List the files in the directory.
+ - ls ~   Lists the home directory.
+ - ls -l  display more details files/folders info. like user permissions, file date
+          created on, and file size in bytes.
+      $ls -l *.pdf  displays all files with pdf extension.
+    $ls some_folder/  This commands lists some_folder contents.
+
+ - cd  Move to a different directory.
+ - cd .. Move back to a parent directory.
+    $cd 'My Documents' ..Here we used the double quotation in order to access directories
+    that contain more than 1 word.
+
+ -;  we use ; to type more than 1 command in one line.
+    $cd /folder/; cd filename.ext;
+ - pwd (print working directory)    displays the current directory.
+ 
+ - mkdir    make new directory
+        $mkdir new_folder
+ - mv       move (cut) files to a new location
+    $mv file_name.ext /folder1 /folder2
+ - rm   Removes a file.
+    rm -i prompts to confirm file deletion before executing the process.
+    $rm -i file_name
+ - rmdir    Removes a directory.
+    $rmdir folder_name   
+
+ - curl   C URL  as in 'see a webpage'.  curl downloads a file from the web.
+ $curl -o google.html -L 'http://google.com'    => Directs the shall to download
+ - cat  View file content.
+    $ cat file_name.txt
+ - less View file contain screen by screen.
+    $less file_name.txt
+
+ - grep  search a file for a particular content.
+    grep: "global regular expression print,” processes text line by line and prints 
+    any lines which match a specified pattern.
+    $grep good dictionary.txt | less  => This command search the word 'good' in 
+    dictionary.txt file.
+
+   $ grep good dictionary | less   
+
+-   $ curl -L 'https://tinyurl.com/zeyq9vc' | grep good  => Search a url page for
+    the word 'good' without the need to download a file in the first place.
+    
+     $curl -L 'https://tinyurl.com/zeyq9vc' | grep good | wc -l   Counts how many
+    search found.    
+
+    curl -L 'https://tinyurl.com/zeyq9vc' | grep -c good  Also counts results found.
+    
+   -l    list all finds
+   -wc   "short for word count" reads either standard input or a list of files and generates one or 
+         more of the following statistics: newline count, word count, and byte count.
+   -c    counts findings
+
+   Regular expressions are also known as regexps or regexes.
+   here is actually a whole complex language of patterns that you can use with grep.
+
+   ^[Rr]eg.*[Ee]x.* which means "any string that starts with reg and has ex in 
+   it, but upper- and lowercase R and E are both OK.
+
+   
+   .bashrc for Windows:
+
+   1) If you're not in the home directory, change into it.
+
+   2) Create a file using touch .bashrc
+
+   3) Then edit it with Vim vim .bashrc
+
+   5) Save and close the file typing :wq and hit Enter.
+
+   6) Restart your Git Bash shell.
+
+   7) When you open your Git bash it will create a .bash_profile for you.
+
+   $PS1='$ '  Hides current working directory.
+
+
+   Aliases  
+      - alias   Allows you to create short names for commands
+
+      $alias ll='ls -l'
+      $ll      List all files/folder in details.
+      
+      $alias greet='echo "Hello, world!"'
+      $greet
+      >>Hello, world!
+   
+      We can also put aliases in .bashrc file
+      1. cd ~
+      2. vim .bashrc
+      3. Inside the .bashrc file:
+      press I button to Insert
+
+      alias ll='ls -l'
+      ~
+      ~
+      ~
+      4. Now press Esc button
+      5. Save the .bashrc file using :wq and hit Enter button.
