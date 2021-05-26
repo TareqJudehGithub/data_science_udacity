@@ -33,6 +33,8 @@ Data types and operators
 
 
 '''
+import math
+
 modulo_quiz = 10 % 4
 print(f'10 % 4 = {modulo_quiz}')
 
@@ -42,7 +44,6 @@ print(f'4 ** 4 = {exponentiation_quiz}')
 divide_round_quiz = (10 + 5) // 2
 print(f'(10 + 5) // 2 = {divide_round_quiz}')
 
-
 '''
 Quiz:
 
@@ -50,7 +51,7 @@ My electricity bills for the last three months have been $23, $32 and $64. What 
 over the three month period? Write an expression to calculate the mean, and use print() to view the result.
 '''
 monthly_bills = (23, 32, 64)
-avg_bill = sum(monthly_bills)/3
+avg_bill = sum(monthly_bills) / 3
 print(avg_bill)
 
 print('\n')
@@ -102,7 +103,7 @@ my_variable = some_value
             MyLat = 105
 '''
 
-    # Assigning multiple variables in Python:
+# Assigning multiple variables in Python:
 x, y, z, = 1, 2, 3
 
 '''
@@ -203,7 +204,6 @@ my_list = [1, 2, 3, 4, 5]
 print(1 in my_list)
 print(7 not in my_list)
 
-
 # Quiz: Assign and Modify Variables
 # Now it's your turn to work with variables. The comments in this quiz (the lines that begin with #) have instructions
 # for creating and modifying variables. After each comment write a line of code that implements the instruction.
@@ -233,6 +233,130 @@ print(reservoir_volume)
 
 carrots = 24
 rabbits = 8
-crs_per_rab = carrots/rabbits
+crs_per_rab = carrots / rabbits
 # rabbits = 12
 print(crs_per_rab)
+
+print('\n')
+# ==============================================
+
+'''
+Integers and Floats
+The are two Python main numeric data types that could be used for numeric values:
+
+int   - Data type for integer values
+float - Data type for decimal or floating point values
+ A float is a real number that uses a decimal point, to allow numbers with fractional values.
+ 
+'''
+num_a = 35  # int
+num_b = 30.5  # float
+result = num_a + num_b
+print(f'result = {result}')
+print(f'result data type is {type(result)}\n')
+# Check variable type:
+print(type(5), type(5.5))
+
+# In case we needed to round fractional to only 2 decimal numbers for more pleasant output, use format()
+print(format(1000.5489789231, '.1f'))  # .1f rounds fractional numbers to 1 decimal digit.
+print(format(100 / 3, '.2f'))
+print('\n')
+decimal_add = 30.3333 + 30.3333
+print(decimal_add)
+print(format(decimal_add, '.2f'))
+print('\n')
+value_c = 50.3298789
+print(value_c)
+value_d = 25.3298789
+print(value_d)
+print(format(value_c + value_d, '.2f'))
+
+# sum () rounding
+scores = [10.24235, 50.5833176, 41.17897]
+print(sum(scores))
+print(format(sum(scores), '.0f'))  # .0f returns to the nearest integer
+
+
+'''
+Python Best Practices
+ - Code should be readable and presentable
+    Good
+    print(4 + 5)
+    Bad
+    print(                       4 + 5)
+
+ - Limit each line of code to 80 characters
+'''
+
+'''
+In general, there are two types of errors to look out for
+
+Exceptions
+Syntax
+An Exception is a problem that occurs when the code is running, , but a 'Syntax Error' is a problem detected when Python 
+checks the code before it runs it. 
+
+Refer to https://docs.python.org/3/tutorial/errors.html for more details on errors in Python.
+'''
+
+# while True:
+#     try:
+#         x = int(input('Please enter a number: '))
+#         break
+#     except ValueError:
+#         print('Please enter a number.')
+
+
+
+print('\n')
+'''
+
+Booleans, Comparison Operators, and Logical Operators
+
+George Bool invited Boolean values.
+We use comparison operators to compare values.
+The bool data type holds one of the values True or False, which are often encoded as 1 or 0, respectively.
+
+There are 6 comparison operators that are common to see in order to obtain a bool value:
+
+Comparison Operators
+    Symbol Use Case	Bool	Operation
+    5 < 3	False	Less Than
+    5 > 3	True	Greater Than
+    3 <= 3	True	Less Than or Equal To
+    3 >= 5	False	Greater Than or Equal To
+    3 == 5	False	Equal To
+    3 != 5	True	Not Equal To
+'''
+
+print(f'5 == 5 is {5 == 5}')
+print(f'5 == "5" is {5 == "5"}')
+print(f'5 != "5" is {5 != "5"}')
+
+'''
+And there are three logical operators you need to be familiar with:
+
+Logical Use	Bool	Operation
+5 < 3 and 5 == 5	False	and - Evaluates if all provided statements are True
+5 < 3 or 5 == 5	True	or - Evaluates if at least one of many statements is True
+not 5 < 3	True	not - Flips the Bool Value
+
+'''
+print(" ")
+
+print(15 < 20 and 15 > 10)
+print(5 == '5' or 5 == 5)
+print(not 10 == '10')
+
+
+print('\n')
+'''
+Quiz: Which is denser, Rio or San Francisco?
+'''
+sf_population, sf_area = 864816, 231.89
+rio_population, rio_area = 6453682, 486.5
+
+san_francisco_pop_density = sf_population/sf_area
+rio_de_janeiro_pop_density = rio_population/rio_area
+print(san_francisco_pop_density, rio_de_janeiro_pop_density)
+print(san_francisco_pop_density > rio_de_janeiro_pop_density)
