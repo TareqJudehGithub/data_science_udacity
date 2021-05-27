@@ -1,3 +1,5 @@
+from speedtest import Speedtest
+
 '''
 Data types and operators
 
@@ -360,3 +362,103 @@ san_francisco_pop_density = sf_population/sf_area
 rio_de_janeiro_pop_density = rio_population/rio_area
 print(san_francisco_pop_density, rio_de_janeiro_pop_density)
 print(san_francisco_pop_density > rio_de_janeiro_pop_density)
+print('\n')
+'''
+Strings
+    - Strings in Python are shown as the variable type str. 
+    - Strings are immutable ordered sequenced of characters.
+    - You can define a string with either double quotes " or single quotes '. 
+    
+    
+'''
+greet_user = 'hello "John"'             # Using double quotes inside a string
+# You can also include a \ in your string to be able to include one of these quotes:
+greet_another_user = 'hello \'John\''   # Using \ inside a string for quotation
+print(greet_user, greet_another_user)
+
+
+# Concatenation in Python
+first_name = 'John'
+last_name = 'Smith'
+full_names = first_name + ' ' + last_name
+print(full_names)
+# OR we use f format
+full_names = f'{first_name} {last_name}'
+print(full_names)
+
+print('\n')
+
+# - len() tells the number of characters in a string.
+# - len() returns a value that can be stored in a variable, unlike print()
+# - object of type 'int' has no len()
+# - len only works on a "sequence (such as a string, bytes, tuple, list, or range) or a collection
+# (such as a dictionary, set, or frozen set),"
+# - The length of a string is an integer data type.
+
+full_name_length = len(full_names)
+print(full_name_length)
+
+# String multiplication
+print((last_name + ' ') * 5)
+
+# We cannot mathematically add, subtract, or divide strings, like the example bellow:
+# print((last_name + ' ') + 5)
+# >>> TypeError
+
+# TODO: Fix this string!
+ford_quote = 'Whether you think you can, or you think you can\'t--you\'re right.'
+ford_quote_2 = "Whether you think you can, or you think you can't--you're right."
+print('\n')
+
+# Quiz: len()
+given_name = "William"
+middle_names = "Bradley"
+family_name = "Pitt"
+full_name = given_name + ' ' + middle_names + ' ' + family_name
+name_length = len(full_name)
+
+# Now we check to make sure that the name fits within the driving license character limit
+# Nothing you need to do here
+driving_license_character_limit = 28
+print(name_length <= driving_license_character_limit)
+
+
+# print('\n')
+# # Internet Speed Test
+# st = Speedtest()
+#
+# download_speed = st.download()
+# upload_speed = st.upload()
+#
+# print('Internet Speed:')
+# print(f'Download speed: {format(download_speed, ".0f")}\nUpload speed: {upload_speed}')
+
+
+
+'''
+Type And Type Conversion
+
+'''
+print('0' + str(5))
+# >>> 05
+
+# print('0' + 5)
+# >>> TypeError
+
+
+# Quiz: Total Sales
+mon_sales = "121"
+tues_sales = "105"
+wed_sales = "110"
+thurs_sales = "98"
+fri_sales = "95"
+
+#TODO: Print a string with this format: This week's total sales: xxx
+# You will probably need to write some lines of code before the print statement.
+total_sales = int(mon_sales) + int(tues_sales) + int(wed_sales) + int(thurs_sales) + int(fri_sales)
+print('This week\'s total sales: ' + str(total_sales))
+
+
+'''
+String Methods
+'''
