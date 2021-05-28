@@ -458,7 +458,101 @@ fri_sales = "95"
 total_sales = int(mon_sales) + int(tues_sales) + int(wed_sales) + int(thurs_sales) + int(fri_sales)
 print('This week\'s total sales: ' + str(total_sales))
 
-
+print('\n')
 '''
 String Methods
+
+    Methods actually are functions that are called using dot notation. For example, lower() is a string method that can 
+    be used like this, on a string called "sample string": sample_string.lower().
+    
+     Methods accepts the string itself as the first argument of the method. However, they
+        also could receive additional arguments, that are passed inside the parentheses.
+        Let's look at the output for a few examples.
+
+            my_string = 'sebastian thrun'
+            >>> my_string.islower()
+            True
+            >>> my_string.count('a')
+            2
+            >>> my_string.find('a')
+            3
+            my_string.rfind('a')
+            *** .rfind() method, find and returns the last matching index of a giving argument.
+        You can see that the count and find methods both take another argument. However, the .islower()
+        method does not accept another argument.
+        
+        
+          
 '''
+print(first_name)
+print(first_name.lower())
+
+# 'string'.format()
+# Numbers of curly braces {} inside the string must match number of placements arguments inside .format()
+
+balloons = 27
+print('Mohammad has {} balloons'.format(balloons))
+
+
+animal = "dog"
+action = "bite"
+print('Does your {} {}?'.format(animal, action))
+
+
+maria_string = 'Maria loves {} and {}'
+print(maria_string.format('math', 'science'))
+
+print(" ")
+# String Method Playground
+
+# Browse the complete list of string methods at:
+# https://docs.python.org/3/library/stdtypes.html#string-methods
+# and try them out here
+my_string = 'hello, world!'
+print(my_string.capitalize())
+print(my_string.title())
+print(my_string.upper())
+print(my_string.islower())
+print(my_string.count('l'))
+print(my_string.encode())
+print(my_string.casefold())
+
+
+# format() Practice
+# Write two lines of code below, each assigning a value to a variable
+my_name = 'tareq judeh'
+my_age = 45
+
+# Now write a print statement using .format() to print out a sentence and the
+#   values of both of the variables
+print("Hello, my name is {}! I'm {} years old.".format(my_name.title(), my_age))
+
+
+# Split
+new_str = 'Hi my names tareq joudeh'
+print(new_str.split())
+# split() method convert the string/variable data type into a list.
+
+print(type(new_str), type(new_str.split()))
+
+print(" ")
+
+print(new_str.split(' ', 3))
+# Or
+print(new_str.split(None, 3))
+# Here, the seperator is space, and maxsplit is 3 (only split the first three created items in the list.)
+
+print(new_str.split('.')) # dot removes any seperator between list items.
+print('\n')
+
+# Quiz: String Methods Coding Practice
+verse = "If you can keep your head when all about you\n  Are losing theirs and blaming it on you,\nIf you can trust yourself when all men doubt you,\n  But make allowance for their doubting too;\nIf you can wait and not be tired by waiting,\n  Or being lied about, don’t deal in lies,\nOr being hated, don’t give way to hating,\n  And yet don’t look too good, nor talk too wise:"
+print(len(verse))
+print(verse.find('and'))
+print(verse.rfind('you'))
+print(verse.count('you'))
+
+ver_length = len(verse)
+print('verse length is {}'.format(ver_length))
+
+
