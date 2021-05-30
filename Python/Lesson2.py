@@ -481,7 +481,7 @@ String Methods
         You can see that the count and find methods both take another argument. However, the .islower()
         method does not accept another argument.
         
-        
+         
           
 '''
 print(first_name)
