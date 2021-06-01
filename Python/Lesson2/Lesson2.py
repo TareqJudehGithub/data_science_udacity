@@ -87,6 +87,8 @@ my_variable = some_value
     =           :   assignment operator that assigns the value on the right, to the variable to the left.
     some_value  :   value
     
+    * Values are saved in memory.
+    
     now we can access the value from its variable name.
 
      - Variable names should be descriptive.
@@ -369,6 +371,9 @@ Strings
     - Strings are immutable ordered sequenced of characters.
     - You can define a string with either double quotes " or single quotes '. 
     
+    * When assigning a value to a variable, that value is saved in memory. When attempting 
+    to change that value, that change is not reflected to the first value saved in memory; thats
+    why Strings are immutable.
     
 '''
 greet_user = 'hello "John"'             # Using double quotes inside a string
@@ -523,6 +528,7 @@ print(my_string.casefold())
 my_name = 'tareq judeh'
 my_age = 45
 
+# Variables values
 # Now write a print statement using .format() to print out a sentence and the
 #   values of both of the variables
 print("Hello, my name is {}! I'm {} years old.".format(my_name.title(), my_age))

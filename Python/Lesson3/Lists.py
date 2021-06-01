@@ -46,9 +46,14 @@ print(my_list[0])
 # IndexError: list index out of range. Meaning the index we are trying to reach, is not in the list.
 
 # List slicing:
-# Slicing begin from the left index. The slicing continues up to the right index.
-my_list[0:6] # The lower bound (0) in inclusive, however the upper bound in exclusive (6).
-
+'''
+List Slicing
+ -  Slicing begin from the left index. The slicing continues up to the right index.
+ -  The lower index of a slice is inclusive and the upper index is exclusive.
+ -  leaving out the lower index starts the slice at 0, while leaving out the upper 
+    index ends the slice at the end of the list.
+'''
+my_list[0:6]  # The lower bound (0) in inclusive, however the upper bound in exclusive (6).
 
 print('\n')
 print(my_list[0:3])
@@ -57,7 +62,7 @@ print(my_list[0:3])
 print(my_list[:3])
 
 print(my_list[:])
-# returns all elemennts
+# returns all elements
 print(my_list[1])
 # >>> 1
 print(my_list[-1])
@@ -80,6 +85,7 @@ print(my_list[-2])
 # List are mutable:
 my_list[0] = 'one'.capitalize()
 print(my_list)
+my_list[0] = 1
 
 # in  and not in operator
 # in and not in return a bool value.
@@ -92,14 +98,13 @@ print('\n')
 # Quiz: List Indexing
 
 month = 8
-days_in_month = [31,28,31,30,31,30,31,31,30,31,30,31]
+days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 # use list indexing to determine the number of days in month
 month -= 1
 num_days = days_in_month[month]
 
 print(num_days)
-
 
 print('\n')
 # Quiz: Slicing Lists
@@ -111,3 +116,57 @@ eclipse_dates = ['June 21, 2001', 'December 4, 2002', 'November 23, 2003',
 # TODO: Modify this line so it prints the last three elements of the list
 print(eclipse_dates[-3:])
 
+print('\n')
+# List methods
+sizes = [15, 6, 89, 34, 65, 35]
+
+len(sizes)    # returns how many elements in a list.
+
+max(sizes)    # returns the greatest element in a list:
+# max on integer returns the highest number, while max on strings
+# returns the element that occurred last, if the list is sorted alphabetically.
+
+family = ['noor', 'dina', 'leen', 'tareq']
+print(max(family))
+
+min(sizes)    # is the opposite of max()
+
+# sum()    returns the sum of all integer elements in a list
+print(sum(sizes))
+
+# sorted() returns a copy of a list in order from smallest to largest, leaving the list unchanged.
+sorted(sizes)   # returns sorted list from smalled to largest (ascending).
+print(sizes)
+print(sorted(sizes))
+# To reverse sorting order (make it descending), add reverse=True argument.
+print(sorted(sizes, reverse=True))
+
+# join()
+'''
+takes a list as an argument, and returns a string, consisting of the list elements, joined 
+by a separator string.
+Note:   join() only works on Strings.
+'''
+
+print('')
+print(',\n'.join(family).title())   # comma separator
+print('\n'.join(family).title())    # new line separator
+
+print('')
+# append()  adds an element to the end of the list.
+family.append('Marwan')
+
+
+'''
+Data Structures quick refresher
+
+- A data type is just a type that classifies data. This can include primitive (basic) 
+  data types like integers, booleans, and strings, as well as data structures, such as lists.
+
+- Data structures are containers that organize and group data types together in different ways. For example, some of the 
+  elements that a list can contain are integers, strings, and even other lists!
+
+- Lists are mutable, ordered data structures.
+ 
+
+'''
