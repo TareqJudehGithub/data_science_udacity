@@ -1,12 +1,18 @@
 '''
 Tuples
- - A tuple is an immutable ordered sequenced data structure in Python.
+ - A tuple is an immutable, ordered data structure that can be indexed and
+   sliced like a list.
+   Tuples are defined by listing a sequence of elements separated by commas,
+   optionally contained within parentheses: ().
  - Tuples are often used to store related pieces of information.
  - Tuples are similar to lists in that they store an ordered collection
-    of objects which can be accessed by their indices.
+   of objects which can be accessed by their indices.
  - Unlike lists, however, tuples are immutable you can't add and remove
     items from tuples, or sort them in place.
 
+ - To summarize:
+    - Each item in a dictionary contains two parts (a key and a value), the items
+      in a dictionary are not ordered, and we have seen in this lesson examples of nested dictionaries.
 
 '''
 new_tuple = tuple()

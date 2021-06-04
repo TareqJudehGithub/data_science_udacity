@@ -2,14 +2,21 @@
 Set
  Sets are containers for mutable unordered collections of UNIQUE elements.
   - Sets remove duplicates.
+  - A set is an unordered data structure, so you can't index and slice elements like
+    a list; there is no sequence of positions to index with!
   - Sets support the 'in' operator (just like Lists do).
+  - you can modify the elements in a set with methods like add() and pop().
   - We add new elements to a Set using the add() method, while in List we use append()
         example: my_set.add('new_element')
   - Sets use pop() to remove a *random element
   - Other operations we can perform with Sets, include those with mathematical sets.Methods
     like union, intersection, and difference are easy to perform in Sets.
 
-  * pop() removes a random element because Sets, unlike Lists are unordered, so there's
+  -  - To summarize:
+    - Sets are not ordered, so the order in which items appear can be inconsistent and you add
+      items to sets with .add. Like dictionaries and lists, sets are mutable.
+
+  *  pop() removes a random element because Sets, unlike Lists are unordered, so there's
     no last element in Sets.
 
 '''

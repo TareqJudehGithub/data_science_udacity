@@ -36,6 +36,10 @@ value from the above list, we can write:
     the position of an element in the object can be used to access the element.
     
   - We can use the order to access parts of a list and a string. 
+  
+  - To summarize:
+    - List are sortable, you can add an item to a list with .append and list items are 
+      always indexed with numbers starting at 0.
 '''
 # List follows 0 indexing:
 
