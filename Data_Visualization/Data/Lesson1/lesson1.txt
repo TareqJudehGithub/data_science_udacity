@@ -1,0 +1,10 @@
+Data
+ What is data? data is a distinct piece of information.
+
+ Data types
+  - Quantitative
+     Quantitative data takes on numeric values that allow us to perform
+     mathematical operations (like the number of dogs).
+
+  - Categorical 
+     Categorical data labels a group or a set of items (like dogs breed).
