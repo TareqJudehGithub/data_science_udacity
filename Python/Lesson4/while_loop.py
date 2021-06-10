@@ -1,3 +1,10 @@
+'''
+While loop
+
+ - A for loop, iterates over elements in a sequence, while a while loop keep
+   iterating over elements until a specified 'stopping condition' is met.
+'''
+
 card_deck = [4, 11, 8, 5, 13, 2, 8, 10]
 hand = list()
 
@@ -117,3 +124,20 @@ while count <= 100:
 When you want to loop based on receiving specific user input.
 while user_input == 'y':
 '''
+
+print('\n')
+# Question: What type of loop should we use?
+num_list = [422, 136, 524, 85, 96, 719, 85, 92, 10, 17, 312, 542, 87, 23, 86, 191, 116, 35, 173, 45, 149, 59, 84, 69, 113, 166]
+odd_num_list = list()
+
+# while :
+
+
+for i in num_list:
+    if i % 2 != 0 and len(odd_num_list) < 5:
+        odd_num_list.append(i)
+
+print(odd_num_list)
+
+
+print('\n')
