@@ -82,5 +82,83 @@ for point in zip(labels, x_coord, y_coord, z_coord):
     points.append('{}: {}, {}, {}'.format(*point))
 # Adding labels to the newly created coords list, creating points list:
 
+# for point in points:
+#     print(point)
+
+
 for point in points:
     print(point)
+
+print('\n')
+'''
+Quiz: Zip Lists to a Dictionary
+Use zip to create a dictionary cast that uses names as keys and heights as values.
+'''
+
+cast_names = ["Barney", "Robin", "Ted", "Lily", "Marshall"]
+cast_heights = [72, 68, 72, 66, 76]
+
+cast = dict()  # replace with your code
+for k, v in zip(cast_names, cast_heights):
+    cast[k] = v
+print(cast)
+
+print('\n')
+'''
+Quiz: Unzip Tuples
+Unzip the cast tuple into two names and heights tuples.
+
+'''
+cast = (("Barney", 72), ("Robin", 68), ("Ted", 72), ("Lily", 66), ("Marshall", 76))
+
+# define names and heights here
+names, heights = zip(*cast)
+
+print(names)
+print(heights)
+
+print('\n')
+
+'''
+Quiz: Transpose with Zip
+Use zip to transpose data from a 4-by-3 matrix to a 3-by-4 matrix. 
+
+'''
+data = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11))
+
+a, b, c = zip(*data)
+
+data_transpose = a, b, c # replace with your code
+print(data_transpose)
+
+
+print('\n')
+print('Quiz: Enumerate\n')
+
+'''
+Quiz: Enumerate
+
+
+Use enumerate to modify the cast list so that each element contains 
+the name followed by the character's corresponding height.
+'''
+cast = ["Barney Stinson", "Robin Scherbatsky", "Ted Mosby", "Lily Aldrin", "Marshall Eriksen"]
+heights = [72, 68, 72, 66, 76]
+
+# write your for loop here
+
+
+
+# Solution using zip() and range() functions:
+# for i, n in zip(range(len(cast)), heights):
+#     cast[i] = cast[i] + ' ' + str(n)
+
+# Solution using enumerate() function:
+for index, item in enumerate(cast):
+    cast[index] = f'{item} {str(heights[index])}'
+
+print(cast)
+
+
+
+
