@@ -18,7 +18,7 @@ See the example below for solution.
  - function names end with parentheses containing parameters, seperated by commas. In
    our case (height, radius).  parameters can be empty also.
  - The function body is indented after the header line.
- - Within the body, we can refer to the parameters provided in the function header.
+ - Within the body, we can refer to the parameters provided in the function definition .
  - Inside the body, we can also define new variables, which can only be used within
    these indented lines.
  - return keyword, give back a value when the function is called.
@@ -105,3 +105,96 @@ print('Variable Scope')
         
         some_function()
 '''
+
+'''
+Passing a global variable into a function
+    There are three ways to pass a global variable into a function:
+        1. By passing that global variable as an argument in the function calling line code.
+        2. By using the 'global' key word inside the function scope, in case we needed to
+           to edit the global scope variable. See example 2.
+        3. 
+'''
+
+# Example 1: Passing global variable in the function argument.
+
+egg_count = 0
+
+
+def buy_eggs(count):
+    return count + 12
+
+
+egg_count = buy_eggs(egg_count)
+print(egg_count, '\n')
+
+
+# Example 2: Passing variable scope using 'global' keyword
+cart = list()
+
+
+def add_to_cart(*args):
+    global cart
+    return cart.extend(args)
+
+
+add_to_cart('Milk', 'Bread')
+print(cart, '\n')
+
+
+''' 
+global scope variable
+ - We can pass a global global scope variable into a function body.
+ - If we needed to edit/change that global scope variable value, we should  use 
+   'global' keyword inside the function. That will change the global scope variable value
+   OUTSIDE the function. To change the global scope variable only inside the function, we 
+   could pass the global scope variable as argument in the function call line of code.
+'''
+global_scope = 'global variable'
+
+
+def print_var():
+    global global_scope
+    global_scope = 'Edited the global scope variable value from inside a function.'
+    return global_scope
+
+
+print(f'global variable scope value from inside the function:\n{print_var()}\n')
+
+print(f'global variable scope value:\n{global_scope}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
