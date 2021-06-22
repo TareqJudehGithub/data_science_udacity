@@ -1,0 +1,6 @@
+input() function
+input function is used to show a message for the user to ask for a an input.
+    input('What is your name? ').title()
+
+
+
