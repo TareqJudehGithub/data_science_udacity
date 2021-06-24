@@ -59,4 +59,11 @@ print(map_result)
 print(filter_result)
 print(reduce_result)
 
+new_var = 'hi'
+print(new_var)
+del new_var
+# print(new_var)
 
+my_bytes = bytes()
+
+print(my_bytes)
