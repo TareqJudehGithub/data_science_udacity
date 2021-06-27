@@ -177,7 +177,6 @@ def sum_inputs():
     print(f'{num_list}\n{sum(even_list)}')
 
 
-
 sum_inputs()
 
 
